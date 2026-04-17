@@ -1,11 +1,18 @@
 import Field from "./field";
 import Button from "./Button";
+import { useState } from "react";
 
-const AddTaskForm = () => {
+const AddTaskForm = ({ addToDo }) => {
+  const [value, setValue] = useState("");
   return (
     <form className="todo__form">
-      <Field />
-      <Button />
+      <Field value={value} setValue={setValue} />
+      <Button
+        onClick={() => {
+          addToDo(value);
+          setValue("");
+        }}
+      />
     </form>
   );
 };

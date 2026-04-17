@@ -1,14 +1,13 @@
-const TodoItem = () => {
+const TodoItem = ({ index, text }) => {
   return (
     <li className="todo__item todo-item">
       <input
         className="todo-item__checkbox"
-        id="task-1"
+        id={`task-${index}`}
         type="checkbox"
-        checked
       />
-      <label className="todo-item__label" htmlFor="task-1">
-        Task 1
+      <label className="todo-item__label" htmlFor={`task-${index}`}>
+        {text}
       </label>
       <button
         className="todo-item__delete-button"
