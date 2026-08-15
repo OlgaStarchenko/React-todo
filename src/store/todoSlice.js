@@ -16,8 +16,14 @@ const todoSlice = createSlice({
 
       store.list.push(action.payload);
     },
+
+    handleDeleteTodo: (store, action) => {
+      store.list = store.list.filter(
+        (_, todoIndex) => todoIndex !== action.payload,
+      );
+    },
   },
 });
 
 export const todoReducer = todoSlice.reducer;
-export const { handleAddToDo } = todoSlice.actions;
+export const { handleAddToDo, handleDeleteTodo } = todoSlice.actions;

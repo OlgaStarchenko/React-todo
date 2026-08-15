@@ -10,10 +10,6 @@ const Todo = () => {
 
   const [search, setSearch] = useState("");
 
-  function deleteTodo(index) {
-    setList((prev) => prev.filter((_, todoIndex) => todoIndex !== index));
-  }
-
   const filteredList = list.filter((item) =>
     item.toLowerCase().includes(search.toLowerCase()),
   );
@@ -24,7 +20,7 @@ const Todo = () => {
       <AddTaskForm />
       <SearchTaskForm search={search} setSearch={setSearch} />
       <TodoInfo list={filteredList} />
-      <TodoList list={filteredList} deleteTodo={deleteTodo} />
+      <TodoList list={filteredList} />
     </div>
   );
 };

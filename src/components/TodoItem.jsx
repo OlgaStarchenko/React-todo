@@ -1,4 +1,8 @@
-const TodoItem = ({ index, text, deleteTodo }) => {
+import { useDispatch } from "react-redux";
+import { handleDeleteTodo } from "../store/TodoSlice";
+
+const TodoItem = ({ index, text }) => {
+  const dispatch = useDispatch();
   return (
     <li className="todo__item todo-item">
       <input
@@ -13,7 +17,7 @@ const TodoItem = ({ index, text, deleteTodo }) => {
         className="todo-item__delete-button"
         aria-label="Delete"
         title="Delete"
-        onClick={() => deleteTodo(index)}
+        onClick={() => dispatch(handleDeleteTodo(index))}
       >
         <svg
           width="20"
