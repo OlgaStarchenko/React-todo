@@ -1,15 +1,18 @@
 import Field from "./field";
 import Button from "./Button";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { handleAddToDo } from "../store/TodoSlice";
 
-const AddTaskForm = ({ addToDo }) => {
+const AddTaskForm = () => {
   const [value, setValue] = useState("");
+  const dispatch = useDispatch();
   return (
     <form className="todo__form">
       <Field value={value} setValue={setValue} />
       <Button
         onClick={() => {
-          addToDo(value);
+          dispatch(handleAddToDo(value));
           setValue("");
         }}
       />
