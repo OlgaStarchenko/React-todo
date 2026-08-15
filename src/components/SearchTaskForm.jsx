@@ -1,4 +1,10 @@
-const SearchTaskForm = ({ search, setSearch }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { handleSearchValue } from "../store/searchSlice";
+
+const SearchTaskForm = () => {
+  const search = useSelector((store) => store.search.searchvalue);
+
+  const dispatch = useDispatch();
   return (
     <form className="todo__form">
       <div className="todo__field field">
@@ -12,7 +18,7 @@ const SearchTaskForm = ({ search, setSearch }) => {
           autoComplete="off"
           type="search"
           value={search}
-          onChange={(event) => setSearch(event.target.value)}
+          onChange={(event) => dispatch(handleSearchValue(event.target.value))}
         />
       </div>
     </form>
