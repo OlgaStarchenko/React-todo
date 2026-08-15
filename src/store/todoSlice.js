@@ -22,8 +22,13 @@ const todoSlice = createSlice({
         (_, todoIndex) => todoIndex !== action.payload,
       );
     },
+
+    handleDeleteAll: (store) => {
+      store.list = [];
+    },
   },
 });
 
 export const todoReducer = todoSlice.reducer;
-export const { handleAddToDo, handleDeleteTodo } = todoSlice.actions;
+export const { handleAddToDo, handleDeleteTodo, handleDeleteAll } =
+  todoSlice.actions;

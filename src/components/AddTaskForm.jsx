@@ -11,6 +11,7 @@ const AddTaskForm = () => {
     <form className="todo__form">
       <Field value={value} setValue={setValue} />
       <Button
+        text={"Add"}
         onClick={() => {
           dispatch(handleAddToDo(value));
           setValue("");
