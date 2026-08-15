@@ -6,18 +6,32 @@ import { useState } from "react";
 
 const Todo = () => {
   const [list, setList] = useState(["Почистить картошку", "Сходить в магазин"]);
+  const [search, setSearch] = useState("");
 
   function addToDo(text) {
+    if (text === "") {
+      alert("Введите название задачи");
+      return;
+    }
+
     setList((prev) => [...prev, text]);
   }
+
+  function deleteTodo(index) {
+    setList((prev) => prev.filter((_, todoIndex) => todoIndex !== index));
+  }
+
+  const filteredList = list.filter((item) =>
+    item.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <div className="todo">
       <h1 className="todo__title">To Do List</h1>
       <AddTaskForm addToDo={addToDo} />
-      <SearchTaskForm />
-      <TodoInfo list={list} />
-      <TodoList list={list} />
+      <SearchTaskForm search={search} setSearch={setSearch} />
+      <TodoInfo list={filteredList} />
+      <TodoList list={filteredList} deleteTodo={deleteTodo} />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-const SearchTaskForm = () => {
+const SearchTaskForm = ({ search, setSearch }) => {
   return (
     <form className="todo__form">
       <div className="todo__field field">
@@ -11,6 +11,8 @@ const SearchTaskForm = () => {
           placeholder=" "
           autoComplete="off"
           type="search"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
         />
       </div>
     </form>

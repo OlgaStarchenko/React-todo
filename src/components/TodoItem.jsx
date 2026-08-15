@@ -1,4 +1,4 @@
-const TodoItem = ({ index, text }) => {
+const TodoItem = ({ index, text, deleteTodo }) => {
   return (
     <li className="todo__item todo-item">
       <input
@@ -13,6 +13,7 @@ const TodoItem = ({ index, text }) => {
         className="todo-item__delete-button"
         aria-label="Delete"
         title="Delete"
+        onClick={() => deleteTodo(index)}
       >
         <svg
           width="20"
